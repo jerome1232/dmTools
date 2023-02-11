@@ -1,9 +1,5 @@
-import { Component } from '@angular/core';
-
-interface TreasureType {
-  value: boolean;
-  viewValue: string;
-}
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +7,12 @@ interface TreasureType {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = '_Dev_Null_\'s DnD 5e Loot Generator';
-  challengeRating: number = 1;
-  groupLoot: boolean = false;
+  title: string = "_Dev_Null_'s DM Tools"
+  isOpened: boolean = false;
+
+  public onMenuClick(): void {
+    console.log(`before: ${this.isOpened}`)
+    this.isOpened = !this.isOpened;
+    console.log(`after: ${this.isOpened}`)
+  }
 }

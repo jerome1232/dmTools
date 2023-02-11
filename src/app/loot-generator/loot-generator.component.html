@@ -1,0 +1,89 @@
+<mat-card class="generator-card">
+  <mat-card-header>
+    <mat-card-title>Loot Generation Options</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="options">
+      <div>
+        <mat-slide-toggle ngModel name="groupLoot">Group Loot</mat-slide-toggle>
+      </div>
+      <div>
+        <mat-slider class="slider" min="1" max="20" step="1" discrete>
+          <input matSliderThumb [(ngModel)]="challengeRating">
+        </mat-slider>
+        <label id="slider-name-label" class="slider-name-label">CR</label>
+        <label id="slider-value-label" class="slider-value-label">
+        {{challengeRating}}
+        </label>
+      </div>
+    </section>
+    <mat-card-actions>
+      <button mat-flat-button color="primary">Generate</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="generator-card" *ngIf="loot.coins.length > 0 || loot.treasures.length > 0">
+  <mat-card class="generator-card" *ngIf="loot.coins.length > 0">
+    <table
+      *ngIf="loot.coins.length > 0"
+      mat-table
+      id="0"
+      [dataSource]="loot.coins">
+
+      <ng-container matColumnDef="coin">
+        <th mat-header-cell *matHeaderCellDef> Coin </th>
+        <td mat-cell *matCellDef="let element"> {{getCoinName(element.type)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button>Re-Roll</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+
+  <mat-card class="generator-card" *ngIf="loot.treasures.length > 0">
+    <table
+      *ngIf="loot.treasures.length > 0"
+      mat-table
+      id="1"
+      [dataSource]="loot.treasures">
+
+      <ng-container matColumnDef="treasure">
+        <th mat-header-cell *matHeaderCellDef> Treasure </th>
+        <td mat-cell *matCellDef="let element"> {{getTreasureTypeName(element.type)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef> Value (gp)</th>
+        <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button>Re-Roll</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayTreasureColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayTreasureColumns;"></tr>
+    </table>
+    </mat-card>
+</mat-card>

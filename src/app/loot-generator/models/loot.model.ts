@@ -1,5 +1,5 @@
 import { ICoin } from "../interfaces/coin.interface";
-import { Treasure } from "../interfaces/treasure.interface";
+import { Treasure } from "./treasure.model";
 
 export class Loot {
 

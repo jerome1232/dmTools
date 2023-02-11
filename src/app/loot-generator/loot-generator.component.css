@@ -1,0 +1,14 @@
+.generator-card {
+  margin: 1rem;
+  padding: 1rem;
+  max-width: auto;
+  border-radius: 5px;
+}
+
+.options {
+  padding: 1em;
+}
+
+.slider-name-label {
+  padding-left: 1rem;
+}

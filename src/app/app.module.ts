@@ -12,10 +12,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+
+import { LootGeneratorComponent } from './loot-generator/loot-generator.component';
+import { MainComponent } from './main/main.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LootGeneratorComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSliderModule,
     FormsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatTableModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
