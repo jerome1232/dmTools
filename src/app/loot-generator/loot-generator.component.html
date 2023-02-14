@@ -17,8 +17,15 @@
         </label>
       </div>
     </section>
-    <mat-card-actions>
-      <button mat-flat-button color="primary">Generate</button>
+    <mat-card-actions class="options-buttons">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="generateLoot()">Generate</button>
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="clear()">Clear</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>

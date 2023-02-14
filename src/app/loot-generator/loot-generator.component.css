@@ -12,3 +12,8 @@
 .slider-name-label {
   padding-left: 1rem;
 }
+
+.options-buttons button {
+  padding: 1rem;
+  margin: 0.25rem;
+}
