@@ -3,6 +3,7 @@
   padding: 1rem;
   max-width: auto;
   border-radius: 5px;
+  overflow: scroll;
 }
 
 .options {
