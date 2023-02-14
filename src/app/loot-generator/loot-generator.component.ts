@@ -13,8 +13,8 @@ import { TreasureGenerator } from './services/treasure-generator.service';
 export class LootGeneratorComponent {
   public challengeRating: number = 1;
   public groupLoot: boolean = false;
-  public displayedColumns: string[] = ['coin', 'amount', 'action']
-  public displayTreasureColumns: string[] = ['treasure', 'name', 'value', 'action']
+  public displayedColumns: string[] = ['coin', 'amount']
+  public displayTreasureColumns: string[] = ['treasure', 'name', 'value']
   private generator: TreasureGenerator = new TreasureGenerator();
 
   loot: Loot = new Loot();
