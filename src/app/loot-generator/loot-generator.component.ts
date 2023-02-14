@@ -3,6 +3,7 @@ import { CoinType } from './enums/coin.enum';
 import { TreasureType } from './enums/treasure.enum';
 import { Coin } from './models/coin.model';
 import { Loot } from './models/loot.model';
+import { TreasureGenerator } from './services/treasure-generator.service';
 
 @Component({
   selector: 'app-loot-generator',
@@ -14,6 +15,7 @@ export class LootGeneratorComponent {
   public groupLoot: boolean = false;
   public displayedColumns: string[] = ['coin', 'amount', 'action']
   public displayTreasureColumns: string[] = ['treasure', 'name', 'value', 'action']
+  private generator: TreasureGenerator = new TreasureGenerator();
 
   loot: Loot = new Loot();
 
@@ -27,11 +29,9 @@ export class LootGeneratorComponent {
 
   public generateLoot(): void {
     console.log("Generate called");
-    this.loot.coins.push({type: CoinType.Copper, amount: 3 });
-    this.loot.coins.push({type: CoinType.Gold, amount: 32});
-
-    this.loot.treasures.push({type: TreasureType.ArtWork, name: 'Mona Lisa', value: 300})
-    this.loot.treasures.push({type: TreasureType.Gemstone, name: 'Quarts', value: 300})
+    console.log(`Options: Cr: ${this.challengeRating} Group: ${this.groupLoot}`)
+    this.clear();
+    this.loot = this.generator.Generate(this.challengeRating, this.groupLoot);
   }
 
   public clear(): void {
