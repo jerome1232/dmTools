@@ -23,7 +23,6 @@ export class TreasureGenerator {
     this.cr = cr;
     this.isGroup = isGroup;
 
-    console.log(this.isGroup);
     if (!this.isGroup) {
       this.individualCoinGenerator();
     } else {
@@ -164,6 +163,8 @@ export class TreasureGenerator {
     let magicItemTable: string | null = null;
 
     let roll: number = this.die100.roll();
+
+    console.log(`HoardTreasure roll: ${roll}`)
     switch (roll) {
       case 1:
       case 2:
@@ -340,6 +341,10 @@ export class TreasureGenerator {
         magicItemTable = 'g';
         break;
     }
+
+    console.log(`Art Roll ${artRolls}`);
+    console.log(`Gem Roll ${gemRolls}`);
+    console.log(`Magic Roll ${magicRolls}`);
 
     for (let i = 0; i < gemRolls; i++) {
       this.loot.treasures.push(GemFactory.create(gpValue));

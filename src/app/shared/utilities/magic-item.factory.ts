@@ -61,6 +61,8 @@ export class MagicItemFactory {
     let die: Dice = new Dice(100);
     let roll = die.roll();
 
+    console.log(`Roll on table a: ${roll}`);
+
     if (roll <= 50) {
       name = "Potion of healing";
     } else if (roll <= 60) {
@@ -90,6 +92,8 @@ export class MagicItemFactory {
     let name: string = '';
     let die: Dice = new Dice(100);
     let roll = die.roll();
+
+    console.log(`Roll on table b: ${roll}`);
 
     switch (roll)
     {
@@ -277,6 +281,8 @@ export class MagicItemFactory {
     let die: Dice = new Dice(100);
     let roll = die.roll();
 
+    console.log(`Roll on table c: ${roll}`);
+
     switch (roll)
     {
       case 1:
@@ -450,6 +456,8 @@ export class MagicItemFactory {
     let die: Dice = new Dice(100);
     let roll = die.roll();
 
+    console.log(`Roll on table d: ${roll}`);
+
     if (roll <= 20) {
       name = "Potion of supreme healing";
     } else if (roll <= 30) {
@@ -496,6 +504,8 @@ export class MagicItemFactory {
     let die: Dice = new Dice(100);
     let roll = die.roll()
 
+    console.log(`Roll on table e: ${roll}`);
+
     if (roll <= 30) {
       name = "Spell scroll (8th level)";
     } else if (roll <= 55) {
@@ -523,6 +533,8 @@ export class MagicItemFactory {
     let name: string = '';
     let die: Dice = new Dice(100);
     let roll = die.roll();
+
+    console.log(`Roll on table f: ${roll}`);
 
     switch (roll)
     {
@@ -759,6 +771,8 @@ export class MagicItemFactory {
     let name: string = '';
     let die100: Dice = new Dice(100);
     let roll = die100.roll();
+
+    console.log(`Roll on table g: ${roll}`);
 
     switch (roll)
     {
@@ -1081,6 +1095,8 @@ export class MagicItemFactory {
     let die100: Dice = new Dice(100);
     let roll = die100.roll();
 
+    console.log(`Roll on table h: ${roll}`);
+
     switch (roll)
     {
       case 1:
@@ -1334,6 +1350,8 @@ export class MagicItemFactory {
     let name: string = '';
     let die100: Dice = new Dice(100);
     let roll = die100.roll();
+
+    console.log(`Roll on table i: ${roll}`);
 
     switch (roll)
     {

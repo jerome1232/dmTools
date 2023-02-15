@@ -26,10 +26,10 @@ export class Loot {
     const col2Width: number = 90;
 
     if (this.coins.length > 0) {
-      data += 'Coins\nCoin\tAmount\n'
+      data += `Coins\n${'Coin'.padEnd(col1Width)}\tAmount\n`
     }
     this.coins.forEach( coin => {
-      data += `${CoinType[coin.type]}\t${coin.amount}\n`;
+      data += `${CoinType[coin.type].padEnd(col1Width)}${coin.amount}\n`;
     })
 
     if (this.treasures.length > 0) {
