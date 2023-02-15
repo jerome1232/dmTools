@@ -330,7 +330,7 @@ export class TreasureGenerator {
       case 98:
       case 99:
         artRolls = this.die4.roll(2);
-        gpValue = 50;
+        gpValue = 25;
         magicRolls = 1;
         magicItemTable = 'g';
         break;
