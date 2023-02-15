@@ -15,6 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule} from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LootGeneratorComponent } from './loot-generator/loot-generator.component';
 import { MainComponent } from './main/main.component';
@@ -40,7 +42,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSidenavModule,
     MatIconModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
