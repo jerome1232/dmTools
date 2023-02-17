@@ -1,34 +1,35 @@
-  <mat-toolbar color="primary">
-    <button mat-icon-button (click)="onMenuClick()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    {{title}}
-  </mat-toolbar>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onMenuClick()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  {{title}}
+</mat-toolbar>
 
-  <mat-sidenav-container class="side-navigation">
-    <mat-sidenav
-      mode="side"
-      [(opened)]="isOpened">
-      <ul class="navigation-items">
-        <li>
-          <a
-            routerLink="/main"
-            routerLinkActive="acti"
-            ariaCurrentWhenActive="page">
-            Main
-          </a>
-        </li>
-        <li>
-          <a
-            routerLink="/loot-generator"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page">
-            Loot Generator
-          </a>
-        </li>
-      </ul>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-    </mat-sidenav-container>
+<mat-sidenav-container class="side-navigation">
+  <mat-sidenav
+    mode="side"
+    [(opened)]="isOpened">
+    <ul class="navigation-items">
+      <li>
+        <a
+          routerLink="/main"
+          routerLinkActive="acti"
+          ariaCurrentWhenActive="page">
+          Main
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/loot-generator"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page">
+          Loot Generator
+        </a>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
