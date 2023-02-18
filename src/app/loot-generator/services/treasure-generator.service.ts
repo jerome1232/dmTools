@@ -911,6 +911,12 @@ export class TreasureGenerator {
         magicItemTable = 'i';
         break;
     }
+
+    console.log(`Art Roll ${artRolls}`);
+    console.log(`Gem Roll ${gemRolls}`);
+    console.log(`Magic Roll ${magicRolls}`);
+    console.log(`Magic Roll 2 ${magicRolls2}`);
+
     for (let i = 0; i < gemRolls; i++)
     {
       this.loot.treasures.push(GemFactory.create(gpValue));
@@ -936,6 +942,251 @@ export class TreasureGenerator {
   }
 
   private hoardTreasureGeneratorCr17(): void {
-    throw new Error("Method not implemented.");
+    let gemRolls = 0;
+    let artRolls = 0;
+    let magicRolls = 0;
+    let gpValue = 0;
+    let magicItemTable = '';
+
+    let roll = this.die100.roll();
+    switch(roll)
+    {
+      case 1:
+      case 2:
+        break;
+      case 3:
+      case 4:
+      case 5:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die8.roll();
+        magicItemTable = 'c';
+        break;
+      case 6:
+      case 7:
+      case 8:
+        artRolls = this.die10.roll();
+        gpValue = 2500;
+        magicRolls = this.die8.roll();
+        magicItemTable = 'c';
+        break;
+      case 9:
+      case 10:
+      case 11:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die8.roll();
+        magicItemTable = 'c';
+        break;
+      case 12:
+      case 13:
+      case 14:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die8.roll();
+        magicItemTable = 'c';
+        break;
+      case 15:
+      case 16:
+      case 17:
+      case 18:
+      case 19:
+      case 20:
+      case 21:
+      case 22:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'd';
+        break;
+      case 23:
+      case 24:
+      case 25:
+      case 26:
+      case 27:
+      case 28:
+      case 29:
+      case 30:
+        artRolls = this.die10.roll();
+        gpValue = 25000;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'd';
+        break;
+      case 31:
+      case 32:
+      case 33:
+      case 34:
+      case 35:
+      case 36:
+      case 37:
+      case 38:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'd';
+        break;
+      case 39:
+      case 40:
+      case 41:
+      case 42:
+      case 43:
+      case 44:
+      case 45:
+      case 46:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'd';
+        break;
+      case 47:
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+      case 52:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'e';
+        break;
+      case 53:
+      case 54:
+      case 55:
+      case 56:
+      case 57:
+      case 58:
+        artRolls = this.die10.roll();
+        gpValue = 2500;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'e';
+        break;
+      case 59:
+      case 60:
+      case 61:
+      case 62:
+      case 63:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'e';
+        break;
+      case 64:
+      case 65:
+      case 66:
+      case 67:
+      case 68:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die6.roll();
+        magicItemTable = 'e';
+        break;
+      case 69:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'g';
+        break;
+      case 70:
+        artRolls = this.die10.roll();
+        gpValue = 2500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'g';
+        break;
+      case 71:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'g';
+        break;
+      case 72:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'g';
+        break;
+      case 73:
+      case 74:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'h';
+        break;
+      case 75:
+      case 76:
+        artRolls = this.die10.roll();
+        gpValue = 2500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'h';
+        break;
+      case 77:
+      case 78:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'h';
+        break;
+      case 79:
+      case 80:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'h';
+        break;
+      case 81:
+      case 82:
+      case 83:
+      case 84:
+      case 85:
+        gemRolls = this.die6.roll(3);
+        gpValue = 1000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'i';
+        break;
+      case 86:
+      case 87:
+      case 88:
+      case 89:
+      case 90:
+        artRolls = this.die10.roll();
+        gpValue = 2500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'i';
+        break;
+      case 91:
+      case 92:
+      case 93:
+      case 94:
+      case 95:
+        artRolls = this.die4.roll();
+        gpValue = 7500;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'i';
+        break;
+      case 96:
+      case 97:
+      case 98:
+      case 99:
+      case 100:
+        gemRolls = this.die8.roll();
+        gpValue = 5000;
+        magicRolls = this.die4.roll();
+        magicItemTable = 'i';
+        break;
+    }
+    for (let i = 0; i < gemRolls; i++)
+    {
+      this.loot.treasures.push(GemFactory.create(gpValue));
+    }
+    for (let i = 0; i < artRolls; i++)
+    {
+      this.loot.treasures.push(ArtworkFactory.create(gpValue));
+    }
+    for (let i = 0; i < magicRolls; i++)
+    {
+      let item: Treasure = MagicItemFactory.create(magicItemTable);
+      if (item) {
+        this.loot.treasures.push(item);
+      }
+    }
   }
 }
