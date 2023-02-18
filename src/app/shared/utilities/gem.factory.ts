@@ -35,7 +35,7 @@ export class GemFactory {
         gemStone = this.gen1000gpGem();
         break;
       case 5000:
-
+        gemStone = this.gen5000gpGem();
         break;
     }
     return gemStone;
