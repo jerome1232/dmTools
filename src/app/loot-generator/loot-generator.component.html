@@ -1,6 +1,21 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-<mat-card class="generator-card">
+<!--
+This file is part of dmTools.
+
+dmTools is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+dmTools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with dmTools. If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<mat-card class="card">
   <mat-card-header>
     <mat-card-title>Loot Generation Options</mat-card-title>
   </mat-card-header>
@@ -32,8 +47,8 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="generator-card" *ngIf="loot.coins.length > 0 || loot.treasures.length > 0">
-  <mat-card-header class="generator-card-header">
+<mat-card class="card" *ngIf="loot.coins.length > 0 || loot.treasures.length > 0">
+  <mat-card-header>
         <button
           mat-icon-button
           matTooltip="Copy to clipboard"
@@ -42,7 +57,7 @@
           <mat-icon>content_copy</mat-icon>
         </button>
   </mat-card-header>
-  <mat-card class="generator-card" *ngIf="loot.coins.length > 0">
+  <mat-card class="card" *ngIf="loot.coins.length > 0">
     <table
       *ngIf="loot.coins.length > 0"
       mat-table
@@ -71,7 +86,7 @@
     </table>
   </mat-card>
 
-  <mat-card class="generator-card" *ngIf="loot.treasures.length > 0">
+  <mat-card class="card" *ngIf="loot.treasures.length > 0">
     <table
       *ngIf="loot.treasures.length > 0"
       mat-table

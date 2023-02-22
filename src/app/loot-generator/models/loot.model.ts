@@ -1,3 +1,20 @@
+/**
+ * This file is part of dmTools.
+ *
+ * dmTools is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * dmTools is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with dmTools. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import { CoinType } from "../enums/coin.enum";
 import { TreasureType } from "../enums/treasure.enum";
 import { ICoin } from "../interfaces/coin.interface";
@@ -20,6 +37,11 @@ export class Loot {
    */
   constructor() {}
 
+  /**
+   * Convert all loot to a tabulated string.
+   *
+   * @returns String representation of a Loot object.
+   */
   public toString(): string {
     let data: string = '';
     const col1Width: number = 16;

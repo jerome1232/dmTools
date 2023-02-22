@@ -1,10 +1,26 @@
+/**
+ * This file is part of dmTools.
+ *
+ * dmTools is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * dmTools is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with dmTools. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import { ArtworkFactory } from "src/app/shared/utilities/artwork.factory";
 import { CoinFactory } from "src/app/shared/utilities/coin.factory";
 import { Dice } from "src/app/shared/utilities/dice.utility";
 import { GemFactory } from "src/app/shared/utilities/gem.factory";
 import { MagicItemFactory } from "src/app/shared/utilities/magic-item.factory";
 import { CoinType } from "../enums/coin.enum";
-import { Coin } from "../models/coin.model";
 import { Loot } from "../models/loot.model";
 import { Treasure } from "../models/treasure.model";
 
