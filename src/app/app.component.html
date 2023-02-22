@@ -1,35 +1,58 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="onMenuClick()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  {{title}}
-</mat-toolbar>
+<!--
+This file is part of dmTools.
 
-<mat-sidenav-container class="side-navigation">
-  <mat-sidenav
-    mode="side"
-    [(opened)]="isOpened">
-    <ul class="navigation-items">
-      <li>
-        <a
-          routerLink="/main"
-          routerLinkActive="acti"
-          ariaCurrentWhenActive="page">
-          Main
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/loot-generator"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page">
-          Loot Generator
-        </a>
-      </li>
-    </ul>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+dmTools is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
+dmTools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with dmTools. If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<div class="main-content">
+  <mat-toolbar class="header" color="primary">
+    <button mat-icon-button (click)="onMenuClick()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    {{title}}
+  </mat-toolbar>
+
+  <mat-sidenav-container class="side-navigation">
+    <mat-sidenav
+      mode="push"
+      [(opened)]="isOpened">
+      <ul class="navigation-items">
+        <li>
+          <a
+            routerLink="/main"
+            routerLinkActive="acti"
+            ariaCurrentWhenActive="page">
+            Main
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/loot-generator"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page">
+            Loot Generator
+          </a>
+        </li>
+      </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+  <mat-toolbar class="footer" color="primary">
+    bc1q7ut8nsx6tkkhuslk254pg5p8a4rhy9xgf22vcf
+  </mat-toolbar>
+</div>

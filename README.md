@@ -1,27 +1,35 @@
-# LootGen
+# Dungeon Master Tool (dmTool)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+This is a web application built in Angular that helps Dungeon Masters (DMs) manage their tabletop role-playing game sessions. It provides a user-friendly interface for DMs to manage their campaigns, characters, encounters, and more.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Loot Generator:** DMs can generate loot for encounters based on loot tables found in the DMG.
 
-## Code scaffolding
+### Planned
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Encounter Management:** DMs can create and manage encounters for their campaigns, including adding and editing encounter information, as well as tracking initiative order and character status during the encounter.
+- **Dice Roller:** DMs can roll dice for various in-game actions directly in the application, including custom rolls with modifiers.
+- **Random Name Generators:** DMs can generate random names for NPCs.
 
-## Build
+## Accessing the tool
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The latest release is hosted at [DmTools](http://devrandom.duckdns.org:8081).
 
-## Running unit tests
+## Using Docker to self host
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To use the dmTool with Docker, you can pull the Docker image from GitHub Container Registry. Here are the steps to follow:
 
-## Running end-to-end tests
+1. Install Docker on your machine if you haven't already done so. You can download it from the [Docker website](https://www.docker.com/products/docker-desktop).
+2. Pull the Docker image from GitHub Container Registry: `docker pull ghcr.io/jerome1232/dmtool:latest`
+3. Run the Docker image: `docker run -d -p 80:80 ghcr.io/jerome1232/dmtool:latest`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+You should now be able to access the application in your browser at `http://localhost`.
 
-## Further help
+## Contributing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you would like to contribute to the dmTool, feel free to submit pull requests with your changes or enhancements. Please be sure to adhere to the code style and testing practices used in the project.
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](https://github.com/your-username/dmtool/blob/main/LICENSE).
