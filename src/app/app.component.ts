@@ -26,7 +26,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   public title: string = "_Dev_Null_'s DM Tools"
   public isOpened: boolean = false;
-  public appVersion: string = '1.0.2';
+  public appVersion: string = '1.0.3';
   public appName: string = 'dmTools';
 
   public onMenuClick(): void {
