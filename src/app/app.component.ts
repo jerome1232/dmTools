@@ -24,8 +24,10 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = "_Dev_Null_'s DM Tools"
-  isOpened: boolean = false;
+  public title: string = "_Dev_Null_'s DM Tools"
+  public isOpened: boolean = false;
+  public appVersion: string = '1.0.2';
+  public appName: string = 'dmTools';
 
   public onMenuClick(): void {
     console.log(`before: ${this.isOpened}`)
