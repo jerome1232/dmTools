@@ -58,18 +58,14 @@ a:hover, :active {
   justify-content: space-between;
 }
 
-.footer a {
-  color: white;
-  text-align: center;
-}
-
 .footer span {
   display: block;
 }
 
 .github {
   padding: 0;
-  margin: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   height: 90%;
   width: auto;
 }
