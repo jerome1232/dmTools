@@ -56,9 +56,17 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
           (click)="onCopyToClipboardClick()">
           <mat-icon>content_copy</mat-icon>
         </button>
+        <button
+          mat-icon-button
+          matTooltip="Sell Loot"
+          aria-label="Sell Loot"
+          (click)="onSellClick()">
+          <mat-icon>sell</mat-icon>
+        </button>
   </mat-card-header>
   <mat-card class="card" *ngIf="loot.coins.length > 0">
     <table
+      #coinTable
       *ngIf="loot.coins.length > 0"
       mat-table
       id="0"
@@ -88,6 +96,7 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
 
   <mat-card class="card" *ngIf="loot.treasures.length > 0">
     <table
+      #treasureTable
       *ngIf="loot.treasures.length > 0"
       mat-table
       id="1"

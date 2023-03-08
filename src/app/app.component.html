@@ -25,8 +25,10 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
 
   <mat-sidenav-container class="side-navigation">
     <mat-sidenav
+      #sidenav
       mode="push"
-      [(opened)]="isOpened">
+      [(opened)]="isOpened"
+      (click)="sidenav.toggle()">
       <ul class="navigation-items">
         <li>
           <a
@@ -53,7 +55,6 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
 
 
   <mat-toolbar class="footer" color="primary">
-    <span class="github"><a href="https://github.com/jerome1232/dmTools/"><img class="github" src="../assets/github-mark-white.svg"></a></span>
-    <span class="version">{{appName}} v{{ appVersion }}</span>
+    <span class="version"><a href="https://github.com/jerome1232/dmTools/">{{appName}} v{{ appVersion }}</a></span>
   </mat-toolbar>
 </div>
