@@ -37,7 +37,7 @@ export class Dice {
     let sum: number = 0;
     let min: number = 1;
     for (let i = 0; i < times; i++) {
-      sum += Math.floor(Math.random() * (this.sides - min) + 1);
+      sum += Math.floor(Math.random() * (this.sides) + min);
     }
     return sum;
   }

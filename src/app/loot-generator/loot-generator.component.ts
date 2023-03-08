@@ -15,13 +15,16 @@
  * along with dmTools. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewChildren } from '@angular/core';
 import { CoinType } from './enums/coin.enum';
 import { TreasureType } from './enums/treasure.enum';
 import { Loot } from './models/loot.model';
 import { TreasureGenerator } from './services/treasure-generator.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Coin } from './models/coin.model';
+import { ICoin } from './interfaces/coin.interface';
+import { Treasure } from './models/treasure.model';
 
 @Component({
   selector: 'app-loot-generator',
@@ -29,15 +32,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./loot-generator.component.css']
 })
 export class LootGeneratorComponent {
+  private generator: TreasureGenerator = new TreasureGenerator();
+
   public challengeRating: number = 1;
   public groupLoot: boolean = false;
   public displayedColumns: string[] = ['coin', 'amount']
   public displayTreasureColumns: string[] = ['treasure', 'name', 'value']
-  private generator: TreasureGenerator = new TreasureGenerator();
+  public loot: Loot = new Loot();
 
-  loot: Loot = new Loot();
-
-  constructor(private clipboard: Clipboard, private snackBar: MatSnackBar) {}
+  constructor(
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar) {}
 
   public getCoinName(coinType: CoinType): string {
     return CoinType[coinType];
@@ -74,6 +79,55 @@ export class LootGeneratorComponent {
       }
     };
     attempt();
+  }
+
+  public onSellClick(): void {
+    let coin: ICoin | undefined;
+
+    this.loot.coins.forEach((c) => {
+      if (c.type === CoinType.Gold) {
+        coin = c;
+      };
+    })
+
+    if (coin === undefined) {
+      coin = new Coin(CoinType.Gold, 0);
+      this.loot.coins.push(coin);
+    }
+
+    let soldAmount: number = 0;
+    for (let i = this.loot.treasures.length - 1; i >= 0; i--) {
+      console.log(`At index ${i}`);
+      if (this.loot.treasures[i].value > 0){
+        let removed = this.loot.treasures.splice(i, 1);
+        if (removed.length > 0) {
+          console.log(`Removed: ${removed[0].value}, ${removed[0].name}, length is now ${this.loot.treasures.length}`);
+          coin.amount += removed[0].value;
+          soldAmount += removed[0].value;
+        } else {
+          console.log(`Didn't remove element`);
+        }
+      }
+    }
+
+    this.loot.coins = this.loot.coins.sort((a, b) => a.type - b.type);
+    let coins: Coin[] = [...this.loot.coins];
+    let treasures: Treasure[] = [... this.loot.treasures];
+
+    // Temporary hack to get around MatTables not refreshing
+    // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
+    // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
+    this.loot.coins = [];
+    this.loot.coins = [...coins];
+
+    this.loot.treasures = [];
+    this.loot.treasures = [...treasures];
+
+    if (soldAmount > 0) {
+      this.snackBar.open(`Loot sold for ${soldAmount}`, 'Loot Sold!', {duration: 2000});
+    } else {
+      this.snackBar.open('No loot to sell', 'No loot sold!', {duration: 2000});
+    }
   }
 }
 

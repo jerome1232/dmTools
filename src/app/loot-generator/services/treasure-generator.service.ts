@@ -358,9 +358,9 @@ export class TreasureGenerator {
         break;
     }
 
-    console.log(`Art Roll ${artRolls}`);
-    console.log(`Gem Roll ${gemRolls}`);
-    console.log(`Magic Roll ${magicRolls}`);
+    console.log(`Art Rolls ${artRolls}`);
+    console.log(`Gem Rolls ${gemRolls}`);
+    console.log(`Magic Rolls ${magicRolls}`);
 
     for (let i = 0; i < gemRolls; i++) {
       this.loot.treasures.push(GemFactory.create(gpValue));
