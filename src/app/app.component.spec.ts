@@ -16,6 +16,10 @@
  */
 
 import { TestBed } from '@angular/core/testing';
+import { MatIcon } from '@angular/material/icon';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import { MatToolbar } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
@@ -23,10 +27,16 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        BrowserAnimationsModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MatToolbar,
+        MatIcon,
+        MatSidenavContainer,
+        MatSidenav,
+        MatSidenavContent
       ],
     }).compileComponents();
   });
@@ -40,13 +50,6 @@ describe('AppComponent', () => {
   it(`should have as title 'lootGen'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lootGen');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('lootGen app is running!');
+    expect(app.title).toEqual('_Dev_Null_\'s DM Tools');
   });
 });
