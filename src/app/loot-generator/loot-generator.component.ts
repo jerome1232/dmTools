@@ -15,7 +15,7 @@
  * along with dmTools. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Component, ViewChild, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 import { CoinType } from './enums/coin.enum';
 import { TreasureType } from './enums/treasure.enum';
 import { Loot } from './models/loot.model';
