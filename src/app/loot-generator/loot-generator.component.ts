@@ -110,21 +110,22 @@ export class LootGeneratorComponent {
       }
     }
 
-    this.loot.coins = this.loot.coins.sort((a, b) => a.type - b.type);
-    let coins: Coin[] = [...this.loot.coins];
-    let treasures: Treasure[] = [... this.loot.treasures];
-
-    // Temporary hack to get around MatTables not refreshing
-    // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
-    // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
-    this.loot.coins = [];
-    this.loot.coins = [...coins];
-
-    this.loot.treasures = [];
-    this.loot.treasures = [...treasures];
 
     if (soldAmount > 0) {
-      this.snackBar.open(`Loot sold for ${soldAmount}`, 'Loot Sold!', {duration: 2000});
+      this.snackBar.open(`Loot sold for ${soldAmount} gp`, 'Loot Sold!', {duration: 2000});
+
+      this.loot.coins = this.loot.coins.sort((a, b) => a.type - b.type);
+      let coins: Coin[] = [...this.loot.coins];
+      let treasures: Treasure[] = [... this.loot.treasures];
+
+      // Temporary hack to get around MatTables not refreshing
+      // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
+      // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
+      this.loot.coins = [];
+      this.loot.coins = [...coins];
+
+      this.loot.treasures = [];
+      this.loot.treasures = [...treasures];
     } else {
       this.snackBar.open('No loot to sell', 'No loot sold!', {duration: 2000});
     }
