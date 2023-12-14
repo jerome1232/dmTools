@@ -63,6 +63,13 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
           (click)="onSellClick()">
           <mat-icon>sell</mat-icon>
         </button>
+        <button
+          mat-icon-button
+          matTooltip="Convert to Gold"
+          aria-label="Convert to Gold"
+          (click)="onConvertToGoldClick()">
+          <mat-icon>currency_exchange</mat-icon>
+        </button>
   </mat-card-header>
   <mat-card class="card" *ngIf="loot.coins.length > 0">
     <table

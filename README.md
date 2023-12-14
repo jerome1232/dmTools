@@ -12,6 +12,24 @@ This is a web application built in Angular that helps Dungeon Masters (DMs) mana
 - **Dice Roller:** DMs can roll dice for various in-game actions directly in the application, including custom rolls with modifiers.
 - **Random Name Generators:** DMs can generate random names for NPCs.
 
+### Local Development
+Install nodejs and npm: [Instructions](https://github.com/nodesource/distributions)
+
+Install angular cli: [Instructions](https://angular.io/cli)
+
+cd into project `cd dmTools`
+
+Run `npm i`
+
+Start development server to see live changes `ng serve`
+```bash
+cd dmTools
+npm i
+ng serve
+```
+
+Development server will be accessable at http://localhost:4200
+
 ## Accessing the tool
 
 The latest release is hosted at [DmTools](http://devrandom.duckdns.org:8081).

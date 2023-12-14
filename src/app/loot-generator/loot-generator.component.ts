@@ -113,22 +113,61 @@ export class LootGeneratorComponent {
 
     if (soldAmount > 0) {
       this.snackBar.open(`Loot sold for ${soldAmount} gp`, 'Loot Sold!', {duration: 2000});
+      this.refreshTableHack()
+    } else {
+      this.snackBar.open('No loot to sell', 'No loot sold!', {duration: 2000});
+    }
+  }
 
+  public onConvertToGoldClick(): void {
+    let gold: Coin = new Coin(CoinType.Gold, 0);
+    this.loot.coins.forEach(c => {
+      switch(c.type) {
+        case CoinType.Copper:
+          gold.amount += gold.amount + (Math.floor(c.amount / 100));
+          c.amount = c.amount % 100;
+          break;
+        case CoinType.Silver:
+          gold.amount += gold.amount + (Math.floor(c.amount / 10));
+          c.amount = c.amount % 10;
+          break;
+        case CoinType.Gold:
+          gold.amount += c.amount;
+          break;
+        case CoinType.Platinum:
+          gold.amount += gold.amount + c.amount * 10;
+          c.amount = 0;
+          break;
+        case CoinType.Electrum:
+          gold.amount += gold.amount + c.amount * 2;
+          c.amount = 0;
+          break;
+      }
+    })
+
+    this.loot.coins.some(c => {
+      if (c.type === CoinType.Gold) {
+        c.amount = gold.amount;
+      }
+    })
+
+    this.snackBar.open(`All currency converted to Gold`, 'Currency Converted!', {duration: 2000});
+    this.refreshTableHack();
+  }
+
+  // Temporary hack to get around MatTables not refreshing
+  // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
+  // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
+  private refreshTableHack(): void {
       this.loot.coins = this.loot.coins.sort((a, b) => a.type - b.type);
       let coins: Coin[] = [...this.loot.coins];
       let treasures: Treasure[] = [... this.loot.treasures];
-
-      // Temporary hack to get around MatTables not refreshing
-      // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
-      // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
       this.loot.coins = [];
       this.loot.coins = [...coins];
 
       this.loot.treasures = [];
       this.loot.treasures = [...treasures];
-    } else {
-      this.snackBar.open('No loot to sell', 'No loot sold!', {duration: 2000});
-    }
+
   }
 }
 
