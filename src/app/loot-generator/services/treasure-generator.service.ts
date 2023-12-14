@@ -361,6 +361,7 @@ export class TreasureGenerator {
     console.log(`Art Rolls ${artRolls}`);
     console.log(`Gem Rolls ${gemRolls}`);
     console.log(`Magic Rolls ${magicRolls}`);
+    console.log(`Item Table ${magicItemTable}`);
 
     for (let i = 0; i < gemRolls; i++) {
       this.loot.treasures.push(GemFactory.create(gpValue));
@@ -402,7 +403,7 @@ export class TreasureGenerator {
       case 8:
       case 9:
       case 10:
-        gemRolls = this.die4.roll(2);
+        artRolls = this.die4.roll(2);
         gpValue = 25;
         break;
       case 11:
@@ -625,6 +626,12 @@ export class TreasureGenerator {
         magicItemTable = 'h';
         break;
     }
+
+    console.log(`Art Rolls ${artRolls}`);
+    console.log(`Gem Rolls ${gemRolls}`);
+    console.log(`Magic Rolls ${magicRolls}`);
+    console.log(`Item Table ${magicItemTable}`);
+
     for (let i = 0; i < gemRolls; i++)
     {
       this.loot.treasures.push(GemFactory.create(gpValue));
@@ -1189,6 +1196,11 @@ export class TreasureGenerator {
         magicItemTable = 'i';
         break;
     }
+
+    console.log(`Art Rolls ${artRolls}`);
+    console.log(`Gem Rolls ${gemRolls}`);
+    console.log(`Magic Rolls ${magicRolls}`);
+
     for (let i = 0; i < gemRolls; i++)
     {
       this.loot.treasures.push(GemFactory.create(gpValue));
