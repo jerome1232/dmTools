@@ -22,9 +22,12 @@ import { Loot } from './models/loot.model';
 import { TreasureGenerator } from './services/treasure-generator.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Coin } from './models/coin.model';
 import { ICoin } from './interfaces/coin.interface';
 import { Treasure } from './models/treasure.model';
+import { SplitCoinsDialogComponent } from './split-coins-dialog.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-loot-generator',
@@ -42,7 +45,9 @@ export class LootGeneratorComponent {
 
   constructor(
     private clipboard: Clipboard,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef) {}
 
   public getCoinName(coinType: CoinType): string {
     return CoinType[coinType];
@@ -113,7 +118,8 @@ export class LootGeneratorComponent {
 
     if (soldAmount > 0) {
       this.snackBar.open(`Loot sold for ${soldAmount} gp`, 'Loot Sold!', {duration: 2000});
-      this.refreshTableHack()
+      this.updateCoins(this.loot.coins);
+      this.updateTreasures(this.loot.treasures);
     } else {
       this.snackBar.open('No loot to sell', 'No loot sold!', {duration: 2000});
     }
@@ -145,29 +151,31 @@ export class LootGeneratorComponent {
       }
     })
 
-    this.loot.coins.some(c => {
-      if (c.type === CoinType.Gold) {
-        c.amount = gold.amount;
-      }
-    })
+    this.loot.coins = this.loot.coins.filter(x => x.amount !== 0 && x.type !== CoinType.Gold);
+    if (gold.amount > 0)
+    {
+      this.loot.coins.push(gold);
+    }
 
-    this.snackBar.open(`All currency converted to Gold`, 'Currency Converted!', {duration: 2000});
-    this.refreshTableHack();
+    this.snackBar.open('All currency converted to Gold', 'Currency Converted!', {duration: 2000});
+    this.updateCoins(this.loot.coins)
+    this.updateTreasures(this.loot.treasures);
   }
 
-  // Temporary hack to get around MatTables not refreshing
-  // https://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
-  // https://material.angular.io/components/table/overview#1-write-your-mat-table-and-provide-data
-  private refreshTableHack(): void {
-      this.loot.coins = this.loot.coins.sort((a, b) => a.type - b.type);
-      let coins: Coin[] = [...this.loot.coins];
-      let treasures: Treasure[] = [... this.loot.treasures];
-      this.loot.coins = [];
-      this.loot.coins = [...coins];
+  public onSplitCoinsClick(): void {
+    let dialogRef = this.dialog.open(SplitCoinsDialogComponent, {
+        data: {coins: this.loot.coins},
+    });
+  }
 
-      this.loot.treasures = [];
-      this.loot.treasures = [...treasures];
+  private updateCoins(coins: Coin[]): void {
+    this.loot.coins = coins;
+    this.cdr.detectChanges();
+  }
 
+  private updateTreasures(treasures: Treasure[]): void {
+    this.loot.treasures = treasures;
+    this.cdr.detectChanges();
   }
 }
 

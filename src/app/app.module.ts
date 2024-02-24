@@ -18,6 +18,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,16 +35,22 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper'
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LootGeneratorComponent } from './loot-generator/loot-generator.component';
 import { MainComponent } from './main/main.component';
-import { MatDividerModule } from '@angular/material/divider';
+import { SplitCoinsDialogComponent } from './loot-generator/split-coins-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LootGeneratorComponent,
     MainComponent,
+    SplitCoinsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,13 @@ import { MatDividerModule } from '@angular/material/divider';
     MatTableModule,
     MatDividerModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatInputModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    NgFor,
+    NgIf
   ],
   providers: [],
   bootstrap: [AppComponent]

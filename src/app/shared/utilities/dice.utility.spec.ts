@@ -1,30 +1,60 @@
-import { TestBed } from '@angular/core/testing';
+/**
+ * This file is part of dmTools.
+ *
+ * dmTools is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * dmTools is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with dmTools. If not, see <https://www.gnu.org/licenses/>.
+ */
 
 import { Dice } from './dice.utility';
 
-describe('DiceService', () => {
-  let utility: Dice;
+describe('Dice', () => {
+  describe('roll', () => {
+    it('should return a valid sum of rolled dice with default parameters', () => {
+      const sides = 6;
+      const dice = new Dice(sides);
+      const rolled = dice.roll();
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+      expect(rolled).toBeGreaterThanOrEqual(1); // Minimum value of a single roll
+      expect(rolled).toBeLessThanOrEqual(sides); // Maximum value of a single roll
+    });
+
+    it('should return a valid sum of rolled dice with specified parameters', () => {
+      const sides = 20;
+      const dice = new Dice(sides);
+      const times = 3;
+      const rolled = dice.roll(times);
+
+      expect(rolled).toBeGreaterThanOrEqual(times); // Minimum possible sum with the specified number of rolls
+      expect(rolled).toBeLessThanOrEqual(times * sides); // Maximum possible sum with the specified number of rolls
+    });
+
+    it('should return zero if times is zero', () => {
+      const sides = 20;
+      const dice = new Dice(sides);
+      const times = 0;
+      const rolled = dice.roll(times);
+
+      expect(rolled).toBe(0);
+    });
+
+    it('should return zero if times is negative', () => {
+      const sides = 20;
+      const dice = new Dice(sides);
+      const times = -3;
+      const rolled = dice.roll(times);
+
+      expect(rolled).toBe(0);
+    });
   });
-
-  const testCases = [
-    { sides: 1, minResult: 1, maxResult: 1 },
-    { sides: 2, minResult: 1, maxResult: 2 },
-    { sides: 100, minResult: 1, maxResult: 100 }
-  ]
-
-  for (let i = 0; i < 100; i++)
-  {
-    testCases.forEach( test => {
-      it(`Should create a ${test.sides} sided die`, () => {
-        let testDie: Dice = new Dice(test.sides);
-        let result: number = testDie.roll();
-
-        expect(result >= test.minResult).toBeTrue();
-        expect(result <= test.maxResult).toBeTrue();
-      })
-    })
-  }
 });
+

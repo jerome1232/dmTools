@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Split Coins</h1>
+<div mat-dialog-content>
+    <mat-stepper orientation="vertical" [linear]="true" #stepper>
+        <mat-step [stepControl]="firstFormGroup" label="Number of Party Members">
+            <form [formGroup]="firstFormGroup">
+                <mat-form-field color="primary" appearance="outline">
+                    <mat-label>Party Members</mat-label>
+                    <input
+                        matInput
+                        required
+                        type="number"
+                        formControlName="firstCtrl"
+                        (ngModelChange)="numPartyMembers = $event">
+                </mat-form-field>
+            </form>
+            <div>
+                <button
+                    mat-flat-button
+                    matStepperNext
+                    color="primary"
+                    type="button"
+                    (click)="onFirstStepClick()"
+                    >
+                    Next
+                </button>
+            </div>
+        </mat-step>
+        <mat-step label="Allocate Percentage" [completed]="false">
+            <form [formGroup]="secondFormGroup">
+                <mat-form-field *ngIf="allocations.length > 0" color="primary" appearance="outline">
+                    <div *ngFor="let allocation of allocations; let i = index">
+                        <mat-slider formControlName="allocation{{i}}" min="0" max="100" step="1" thumbLabel></mat-slider>
+                    </div>
+                </mat-form-field>
+            </form>
+            <div>
+                <button mat-flat-button matStepperPrevious color="primary">Back</button>
+                <button mat-flat-button matStepperNext color="primary">Next</button>
+            </div>
+        </mat-step>
+        <mat-step label="Split Results">
+            <!-- Add content for the final step if needed -->
+        </mat-step>
+    </mat-stepper>
+</div>
