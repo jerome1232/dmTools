@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Split Coins</h1>
 <div mat-dialog-content>
-    <mat-stepper orientation="vertical" [linear]="true" #stepper>
+    <mat-stepper orientation="vertical" [linear]="true" #stepper (selectionChange)="onStepChange($event)">
         <mat-step [stepControl]="firstFormGroup" label="Number of Party Members">
             <form [formGroup]="firstFormGroup">
                 <mat-form-field color="primary" appearance="outline">
@@ -16,30 +16,57 @@
             <div>
                 <button
                     mat-flat-button
-                    matStepperNext
                     color="primary"
                     type="button"
-                    (click)="onFirstStepClick()"
+                    (click)="onFirstStepClickAndAdvance(stepper)"
                     >
                     Next
                 </button>
             </div>
         </mat-step>
-        <mat-step label="Allocate Percentage" [completed]="false">
-            <form [formGroup]="secondFormGroup">
-                <mat-form-field *ngIf="allocations.length > 0" color="primary" appearance="outline">
-                    <div *ngFor="let allocation of allocations; let i = index">
-                        <mat-slider formControlName="allocation{{i}}" min="0" max="100" step="1" thumbLabel></mat-slider>
-                    </div>
-                </mat-form-field>
-            </form>
+        <mat-step label="Allocate Percentage">
             <div>
+                <div *ngIf="allocations.length > 0">
+                    <div *ngFor="let allocation of allocations; let i = index" class="allocation-row">
+                        <div class="name-col">
+                            <input class="name-input" type="text" [(ngModel)]="names[i]">
+                            <div class="percent">{{ allocationsValues[i] || 0 }}%</div>
+                        </div>
+                        <input type="range" [value]="(allocationsDraft[i] !== undefined ? allocationsDraft[i] : allocationsValues[i])" min="0" [max]="getSliderMax(i)" step="1"
+                              (input)="onSliderDrag(i, $any($event.target).valueAsNumber)"
+                              (change)="onSliderChange(i, $any($event.target).valueAsNumber)">
+                        <button mat-icon-button class="lock-btn" (click)="toggleLock(i)" [attr.aria-pressed]="locked[i]">
+                            <mat-icon>{{ locked[i] ? 'lock' : 'lock_open' }}</mat-icon>
+                        </button>
+                    </div>
+                    <div class="total">Total: {{ totalAllocation }}%</div>
+                </div>
+            </div>
+            <div class="actions">
                 <button mat-flat-button matStepperPrevious color="primary">Back</button>
                 <button mat-flat-button matStepperNext color="primary">Next</button>
             </div>
         </mat-step>
         <mat-step label="Split Results">
-            <!-- Add content for the final step if needed -->
+            <div *ngIf="splitResults.length > 0" class="results">
+                <h3>Split Results</h3>
+                <div *ngFor="let player of splitResults; let i = index" class="result-row">
+                    <div class="player-panel">
+                        <div class="player-header">
+                            <input class="name-input" type="text" [(ngModel)]="splitResults[i].name" (ngModelChange)="onResultNameChange(i, $event)">
+                        </div>
+                        <div class="coin-list">
+                            <div *ngFor="let c of player.coins" class="coin-item">
+                                <span class="coin-type">{{ c.type }}</span>
+                                <span class="coin-amount">{{ c.amount }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="splitResults.length === 0">
+                <p>No allocations defined.</p>
+            </div>
         </mat-step>
     </mat-stepper>
 </div>

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { SplitCoinsDialogComponent } from './split-coins-dialog.component';
 
@@ -32,10 +32,15 @@ describe('SplitCoinsDialogComponent', () => {
     expect(component.secondFormGroup).toBeDefined();
   });
 
-  it('onFirstStepClick should initialize allocations and add controls to secondFormGroup', () => {
+  it('onFirstStepClick should initialize allocations, values, names and locks', () => {
     component.firstFormGroup.setValue({ firstCtrl: '3' }); // Set number of party members
     component.onFirstStepClick();
-    expect(component.allocations.length).toBe(3); // Check if allocations array is populated
-    expect((component.secondFormGroup.controls as any)['allocation0']).toBeDefined(); // Check if control is added to secondFormGroup
+    expect(component.allocations.length).toBe(3); // allocations populated
+    expect(component.allocationsValues.length).toBe(3); // values set
+    expect(component.names.length).toBe(3); // names initialized
+    expect(component.allocationsDraft.length).toBe(3); // drafts initialized
+    expect(component.locked.length).toBe(3); // locks initialized
+    const total = component.allocationsValues.reduce((s, v) => s + (v || 0), 0);
+    expect(Math.round(total)).toBe(100); // allocations sum to 100
   });
 });
