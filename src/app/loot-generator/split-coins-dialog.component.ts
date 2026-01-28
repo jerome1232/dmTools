@@ -248,6 +248,4 @@ export class SplitCoinsDialogComponent {
       this.names[index] = this.splitResults[index].name;
     }
   }
-
-  // getControl removed — sliders use direct value binding now
 }
