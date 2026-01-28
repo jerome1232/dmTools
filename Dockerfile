@@ -3,7 +3,8 @@ WORKDIR /app
 
 # Install dependencies (use npm ci for reproducible installs)
 COPY package.json package-lock.json ./
-RUN npm ci --no-audit --no-fund
+# Allow legacy peer deps to avoid build failures when lockfile/CI differs
+RUN npm ci --legacy-peer-deps --no-audit --no-fund
 
 # Copy source and build
 COPY . .
