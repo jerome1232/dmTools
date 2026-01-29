@@ -70,6 +70,13 @@ along with dmTools. If not, see <https://www.gnu.org/licenses/>.
           (click)="onConvertToGoldClick()">
           <mat-icon>currency_exchange</mat-icon>
         </button>
+        <button
+          mat-icon-button
+          matTooltip="Split Coins"
+          aria-label="Split Coins"
+          (click)="onSplitCoinsClick()">
+          <mat-icon>call_split</mat-icon>
+        </button>
   </mat-card-header>
   <mat-card class="card" *ngIf="loot.coins.length > 0">
     <table
