@@ -684,7 +684,6 @@ export class TreasureGenerator {
         break;
       case 11:
       case 12:
-      case 13:
         gemRolls = this.die6.roll(3);
         gpValue = 500;
         break;

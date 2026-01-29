@@ -194,7 +194,7 @@ export class MagicItemFactory {
       case 60:
       case 61:
       case 62:
-      case 62:
+      case 63:
       case 64:
         name = "Spell scroll (3rd level)";
         break;
@@ -333,8 +333,6 @@ export class MagicItemFactory {
       case 25:
       case 26:
       case 27:
-      case 28:
-      case 29:
         name = "Ammunition, +2";
         break;
       case 28:
@@ -359,10 +357,10 @@ export class MagicItemFactory {
         name = "Potion of gaseous form";
         break;
       case 43:
-      case 43:
-      case 43:
-      case 43:
-      case 43:
+      case 44:
+      case 45:
+      case 46:
+      case 47:
         name = "Potion of frost giant strength";
         break;
       case 48:
