@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormBuilder, FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SplitCoinsDialogComponent } from './split-coins-dialog.component';
 
 describe('SplitCoinsDialogComponent', () => {
@@ -11,8 +12,19 @@ describe('SplitCoinsDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SplitCoinsDialogComponent],
-      imports: [ReactiveFormsModule, MatSliderModule],
-      providers: [FormBuilder],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        MatSliderModule,
+        (await import('@angular/platform-browser/animations')).NoopAnimationsModule,
+        (await import('@angular/material/stepper')).MatStepperModule,
+        (await import('@angular/material/form-field')).MatFormFieldModule,
+        (await import('@angular/material/input')).MatInputModule,
+        (await import('@angular/material/button')).MatButtonModule,
+        (await import('@angular/material/icon')).MatIconModule,
+        (await import('@angular/material/dialog')).MatDialogModule
+      ],
+      providers: [FormBuilder, { provide: MAT_DIALOG_DATA, useValue: { coins: [] } }],
     }).compileComponents();
   });
 
